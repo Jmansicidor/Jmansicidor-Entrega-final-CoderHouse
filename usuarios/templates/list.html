@@ -1,10 +1,46 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends "base.html" %}
 
-</body>
-</html>
+{% block title %} Inicio{% endblock %}
+{% block body %}
+    <div class="row">
+        <div class="col-sm-12 col-md-6 col-lg-4 col-xl-4 ">
+            <h2>title </h2>
+
+        </div>
+
+        <div class="col-sm-12 col-md-6 col-lg-8 col-xl-8 ">
+            <div class="table-responsive py-2">
+                <h1>Listado Usuarios</h1>
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th>Codigo</th>
+                        <th>Nombre Completo</th>
+                        <th>Genero</th>
+                        <th>Correo</th>
+
+
+                    </tr>
+
+                    </thead>
+                    <tbody>
+                    {% for p in userslist %}
+                        <tr>
+                            <td>{{ p.id }}</td>
+                            <td>{{ p.name }} {{p.last_name }}</td>
+                            <td>{{ p.get_user_sex_display}}</td>
+                            <td>{{ p.mailbox }}</td>
+                        </tr>
+                    {% endfor %}
+
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+
+        </div>
+    </div>
+{% endblock %}
