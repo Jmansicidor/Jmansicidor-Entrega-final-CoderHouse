@@ -1,4 +1,9 @@
+from curses.ascii import US
 import mailbox
+
+from unicodedata import name
+from django import forms
+from django.contrib.auth.forms import UserCreationForm
 
 from django.db import models
 
@@ -20,3 +25,16 @@ class User(models.Model):
 
     def __str__(self):
         return f'User {self.id}: {self.name} {self.last_name} {self.mailbox}'
+
+
+class UserRegisterForm(UserCreationForm):
+
+    username = forms.CharField()
+    email = forms.EmailField()
+    passsword1 = forms.CharField(label='contraseña', widget = forms.PasswordInput)
+    password2: forms.CharField(label='repetir contraseña', widget = forms.PasswordInput)
+
+    class Meta(UserCreationForm.Meta):
+        model = User
+        fields = ['name','email','password1','password2']
+        
