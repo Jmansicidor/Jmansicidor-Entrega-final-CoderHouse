@@ -6,9 +6,8 @@ from django.views.generic import CreateView,UpdateView,DetailView,DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.models import User
 from django.contrib.messages.views import SuccessMessageMixin
-from django.contrib.auth.forms import UserCreationForm,UserChangeForm
-
-from .forms import UserForms
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.views import LoginView
 from .models import User
 
 
@@ -24,8 +23,22 @@ class SingUpView(SuccessMessageMixin,CreateView):
     form_class = UserCreationForm 
     success_message = 'Se ha creado su cuenta sastifactoriamente'
 
-class SingUpdateView(SuccessMessageMixin,UpdateView):
-    template_name = 'user_updete_count.html'
-    success_url = reverse_lazy('users')
-    form_class = UserChangeForm
-    success_message = 'Se han actualizados sus datos'
+
+class SignInView(LoginView):
+    template_name = 'user_signin'
+
+
+class SingUpdateView(UpdateView):
+
+    model = User
+    template_name = "user_updete_count.html"
+    fields = ["username", "email", "first_name", "last_name"]
+
+    def get_success_url(self):
+      return reverse_lazy("blogger_profile", kwargs={"pk": self.request.user.id})
+
+    
+
+
+
+  

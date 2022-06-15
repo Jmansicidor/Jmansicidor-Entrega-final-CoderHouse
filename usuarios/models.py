@@ -1,9 +1,12 @@
 from curses.ascii import US
+from distutils.command.upload import upload
+from email.mime import image
 import mailbox
+from pickle import TRUE
 
 from unicodedata import name
 from django import forms
-from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.forms import UserCreationForm, UserChangeForm
 
 from django.db import models
 
@@ -36,5 +39,12 @@ class UserRegisterForm(UserCreationForm):
 
     class Meta(UserCreationForm.Meta):
         model = User
-        fields = ['name','email','password1','password2']
+        fields = ['username','email','password1','password2']
         
+
+
+
+class Avatar(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    image = models.ImageField(upload_to = 'avatar', null = True)
+   
