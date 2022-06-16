@@ -18,14 +18,18 @@ def users(request):
 
 
 class SingUpView(SuccessMessageMixin,CreateView):
+    
+    
     template_name = 'user_create_count.html'
-    success_url = reverse_lazy('users')
     form_class = UserCreationForm 
+    success_url = reverse_lazy('users')   
     success_message = 'Se ha creado su cuenta sastifactoriamente'
 
 
-class SignInView(LoginView):
-    template_name = 'user_signin'
+class SingDetail(DetailView):
+
+    model = User
+    template_name = 'user_detail'
 
 
 class SingUpdateView(UpdateView):

@@ -1,7 +1,28 @@
-<a href="{% url 'users' %}">Volver a Lista De Usuarios</a>
+{% load bootstrap5 %}
+{% bootstrap_css %}
+{% load static %}
+
+
+
+<a class="btn btn-secondary" href="{% url 'users' %}" role="button">Volver a Lista De Usuarios</a>
+
+{% block content %}
+
+
+
 
 <form method="post">
     {% csrf_token %}
-    {{ form.as_p }}
-    <input type="submit" value="Crear Cuenta">
+
+    <div style= "width:50%; margin :auto;">
+
+    {% bootstrap_form form %}
+    
+   
+    <button type="submit" class="btn btn-success">Crear Cuenta</button>
+   
 </form>
+</div
+
+
+{% endblock %}

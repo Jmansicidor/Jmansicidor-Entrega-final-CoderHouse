@@ -8,5 +8,6 @@ urlpatterns = [
     path("", views.users, name="users"),
     path('login/', views.SingUpView.as_view(), name = 'user_login' ),
     path('update/<pk>', views.SingUpdateView.as_view(), name = 'user_update' ),
+    path('detail/<pk>', views.SingDetail.as_view(), name = 'user_detail' ),
 
 ]

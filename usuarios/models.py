@@ -30,19 +30,6 @@ class User(models.Model):
         return f'User {self.id}: {self.name} {self.last_name} {self.mailbox}'
 
 
-class UserRegisterForm(UserCreationForm):
-
-    username = forms.CharField()
-    email = forms.EmailField()
-    passsword1 = forms.CharField(label='contraseña', widget = forms.PasswordInput)
-    password2: forms.CharField(label='repetir contraseña', widget = forms.PasswordInput)
-
-    class Meta(UserCreationForm.Meta):
-        model = User
-        fields = ['username','email','password1','password2']
-        
-
-
 
 class Avatar(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)

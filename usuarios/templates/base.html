@@ -7,6 +7,21 @@
           integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
 </head>
 <body>
+<div style="text-align: right; margin-right: 100px; color:blue">
+
+    {% if User.is_authenticated %}
+
+    Autenticado
+
+    {%else%}
+
+    No autenticado
+    
+
+    {% endif %}
+
+</div>
+
 
 
 <nav class="navbar navbar-dark bg-dark">
@@ -22,10 +37,10 @@
                     <a class="nav-link active" aria-current="page" href="{% url 'user_login' %}">Registrarse</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{% url 'user_update' user.id %}">Editar Perfil</a>
+                    <a class="nav-link" href="{% url 'user_update' %">Editar Perfil</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Crear Blog</a>
+                    <a class="nav-link" href="{% url 'user_detail' %">Detalles de usuario</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Iniciar sesion</a>
