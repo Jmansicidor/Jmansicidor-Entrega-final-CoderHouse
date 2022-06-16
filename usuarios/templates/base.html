@@ -9,13 +9,14 @@
 <body>
 <div style="text-align: right; margin-right: 100px; color:blue">
 
-    {% if User.is_authenticated %}
+    {% if user.is_authenticated %}
 
-    Autenticado
-
+    
+    Hola {{user.username}}
+    
     {%else%}
 
-    No autenticado
+    Registrate 
     
 
     {% endif %}
@@ -37,10 +38,10 @@
                     <a class="nav-link active" aria-current="page" href="{% url 'user_login' %}">Registrarse</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{% url 'user_update' %">Editar Perfil</a>
+                    <a class="nav-link" href="#">Editar Perfil</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{% url 'user_detail' %">Detalles de usuario</a>
+                    <a class="nav-link" href="#">Detalles de usuario</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Iniciar sesion</a>
