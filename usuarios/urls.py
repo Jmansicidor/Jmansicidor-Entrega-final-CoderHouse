@@ -6,8 +6,9 @@ from usuarios import views
 
 urlpatterns = [
     path("", views.users, name="users"),
-    path('login/', views.SingUpView.as_view(), name = 'user_login' ),
+    path('login/', views.SingUpView.as_view(), name = 'user_singin' ),
     path('update/<pk>', views.SingUpdateView.as_view(), name = 'user_update' ),
     path('detail/<pk>', views.SingDetail.as_view(), name = 'user_detail' ),
+    path("ingresar/", views.UserLogin.as_view(), name="user_login"),
 
 ]

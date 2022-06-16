@@ -1,11 +1,19 @@
-{% block title %}Inicia Sesión{% endblock %}
+{% load bootstrap5 %}
+{% bootstrap_css %}
+{% load static %}
+
+<a class="btn btn-secondary" href="{% url 'users' %}" role="button">Volver a Lista De Usuarios</a>
 
 {% block content %}
-<ul>
-    <li>Nombre: {{object.firstname}}</li>
-    <li>Apellido: {{object.last_name}}</li>
-    <li>Email: {{object.email}}</li>
-    <li>Nombre de Usuario: {{object.username}}</li>
-</ul>
 
+<div style= "width:50%; margin :auto; margin-top: 20;">
+
+<ul class="list-group list-group-flush">
+    <li class="list-group-item">Nombre: {{object.firstname}}</li>
+    <li class="list-group-item">Apellido: {{object.last_name}}</li>
+    <li class="list-group-item">Email: {{object.email}}</li>
+    <li class="list-group-item">Nombre de Usuario: {{object.username}}</li>
+  
+  </ul>
+</div>
 {% endblock content %}

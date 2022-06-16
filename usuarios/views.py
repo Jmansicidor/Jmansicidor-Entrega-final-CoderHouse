@@ -29,20 +29,21 @@ class SingUpView(SuccessMessageMixin,CreateView):
 class SingDetail(DetailView):
 
     model = User
-    template_name = 'user_detail'
+    template_name = 'user_detail.html'
 
 
-class SingUpdateView(UpdateView):
+class SingUpdateView(LoginRequiredMixin, UpdateView):
 
     model = User
     template_name = "user_updete_count.html"
     fields = ["username", "email", "first_name", "last_name"]
 
     def get_success_url(self):
-      return reverse_lazy("blogger_profile", kwargs={"pk": self.request.user.id})
+      return reverse_lazy("user_detail", kwargs={"pk": self.request.user.id})
 
     
 
-
-
+class UserLogin(LoginView):
+    template_name = 'user_login.html'
+    next_page = reverse_lazy("users")
   
