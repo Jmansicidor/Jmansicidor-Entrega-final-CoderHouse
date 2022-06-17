@@ -52,19 +52,20 @@ class UserLogin(LoginView):
 
 @login_required
 def agregarAvatar(request):
+
     if request.method == 'POST':
 
         miFormulario = AvatarFormulario(request.POST, request.FILES)
 
-        if miFormulario.is_valid:
+        if miFormulario.is_valid():
 
             u = User.objects.get(username=request.user)
 
-            avatar = Avatar(user = u, imagen=miFormulario.cleaned_data['imagen'])
+            avatar = Avatar(user = u, image=miFormulario.cleaned_data['image'])
 
             avatar.save()
 
-            return render(request, 'usuarios.html')
+            return render(request, 'list.html')
 
     else:
 
