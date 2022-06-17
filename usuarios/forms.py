@@ -1,10 +1,10 @@
 from django.forms import ModelForm
-from usuarios.models import User
+from usuarios.models import UserInfo
 
 
 class UserForms(ModelForm):
     class Meta:
-        model = User
+        model = UserInfo
         fields = '__all__'
         widgets = {
 

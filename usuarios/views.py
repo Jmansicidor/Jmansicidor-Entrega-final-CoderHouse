@@ -8,12 +8,12 @@ from django.contrib.auth.models import User
 from django.contrib.messages.views import SuccessMessageMixin
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.views import LoginView
-from .models import User
+from .models import UserInfo
 
 
 # Create your views here.
 def users(request):
-    formaUser = User.objects.all()
+    formaUser = UserInfo.objects.all()
     return render(request, "list.html", {"userslist": formaUser})
 
 

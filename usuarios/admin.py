@@ -6,5 +6,5 @@ from usuarios.models import*
 # Register your models here.
 
 
-admin.site.register(User)
+admin.site.register(UserInfo)
 admin.site.register(Create)

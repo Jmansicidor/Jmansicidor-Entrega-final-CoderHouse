@@ -17,7 +17,7 @@ user_sex = [
 ]
 
 
-class User(models.Model):
+class UserInfo(models.Model):
     name = models.CharField(max_length=255)
     last_name = models.CharField(max_length=255)
     user_sex = models.IntegerField(
@@ -30,8 +30,6 @@ class User(models.Model):
         return f'User {self.id}: {self.name} {self.last_name} {self.mailbox}'
 
 
-
 class Avatar(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
-    image = models.ImageField(upload_to = 'avatar', null = True)
-   
+    user = models.ForeignKey(UserInfo, on_delete=models.CASCADE)
+    image = models.ImageField(upload_to='avatar', null=True)
