@@ -1,7 +1,25 @@
-<a href="{% url 'users' user.id %}">Volver a Lista De Usuarios</a>
+{% load bootstrap5 %}
+{% bootstrap_css %}
+{% load static %}
+
+
+
+{% block content %}
+
+<a class="btn btn-secondary" href="{% url 'users' %}" role="button">Volver a Lista De Usuarios</a>
 
 <form method="post">
     {% csrf_token %}
-    {{ form.as_p }}
-    <input type="submit" value="Actualizar Cuenta">
+
+    <div style= "width:50%; margin :auto;">
+
+    {% bootstrap_form form %}
+    <button type="submit" class="btn btn-success">Actualizar Cuenta</button>
+    <a class="btn btn-dark" href="{% url 'agregarAvatar' %}" role="button">Actualizar Avatar</a>
+  
 </form>
+
+
+
+
+{% endblock content %}

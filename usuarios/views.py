@@ -8,7 +8,9 @@ from django.contrib.auth.models import User
 from django.contrib.messages.views import SuccessMessageMixin
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.views import LoginView
-from .models import UserInfo
+from .models import UserInfo, Avatar
+from .forms import AvatarFormulario
+from django.contrib.auth.decorators import login_required
 
 
 # Create your views here.
@@ -47,3 +49,25 @@ class UserLogin(LoginView):
     template_name = 'user_login.html'
     next_page = reverse_lazy("users")
   
+
+@login_required
+def agregarAvatar(request):
+    if request.method == 'POST':
+
+        miFormulario = AvatarFormulario(request.POST, request.FILES)
+
+        if miFormulario.is_valid:
+
+            u = User.objects.get(username=request.user)
+
+            avatar = Avatar(user = u, imagen=miFormulario.cleaned_data['imagen'])
+
+            avatar.save()
+
+            return render(request, 'usuarios.html')
+
+    else:
+
+        miFormulario = AvatarFormulario()
+
+    return render(request, "agregarAvatar.html", {"miFormulario":miFormulario})

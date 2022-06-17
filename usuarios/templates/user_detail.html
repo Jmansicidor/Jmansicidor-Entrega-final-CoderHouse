@@ -9,11 +9,14 @@
 <div style= "width:50%; margin :auto; margin-top: 20;">
 
 <ul class="list-group list-group-flush">
-    <li class="list-group-item">Nombre: {{object.firstname}}</li>
-    <li class="list-group-item">Apellido: {{object.last_name}}</li>
-    <li class="list-group-item">Email: {{object.email}}</li>
-    <li class="list-group-item">Nombre de Usuario: {{object.username}}</li>
+    <li class="list-group-item">Nombre: {{user.first_name}}</li>
+    <li class="list-group-item">Apellido: {{user.last_name}}</li>
+    <li class="list-group-item">Email: {{user.email}}</li>
+    <li class="list-group-item">Nombre de Usuario: {{user.username}}</li>
   
   </ul>
 </div>
-{% endblock content %}
+{% endblock content %}>
+
+<img height="128" src="{{ object.avatar_set.first.image.url }}" />
+

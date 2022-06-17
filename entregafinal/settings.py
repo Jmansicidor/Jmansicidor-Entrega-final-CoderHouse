@@ -10,8 +10,9 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 
-from pathlib import Path
 
+from pathlib import Path
+import os
 from django.urls import reverse_lazy
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -41,7 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'usuarios',
+    'usuarios.apps.UsuariosConfig',
 
 ]
 
@@ -129,3 +130,10 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 LOGIN_URL = '/inicia-sesion/'
+
+
+#para saber en que carpeta esta la carpeta
+MEDIA_URL = "media/"
+
+# direccion donde estaran las imagenes, donde se guardaran
+MEDIA_ROOT = os.path.join(BASE_DIR,'media')

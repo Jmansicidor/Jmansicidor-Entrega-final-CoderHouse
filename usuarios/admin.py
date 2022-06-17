@@ -8,3 +8,5 @@ from usuarios.models import*
 
 admin.site.register(UserInfo)
 admin.site.register(Create)
+admin.site.register(Avatar)
+
