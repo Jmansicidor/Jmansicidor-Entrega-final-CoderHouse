@@ -1,9 +1,6 @@
 from curses.ascii import US
 from distutils.command.upload import upload
-from email.mime import image
-import mailbox
-from pickle import TRUE
-
+from django.contrib.auth.models import User
 from unicodedata import name
 from django import forms
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm
@@ -31,6 +28,8 @@ class UserInfo(models.Model):
         return f'User {self.id}: {self.name} {self.last_name} {self.mailbox}'
 
 
+# clase para agregar avatar al usuario
+
 class Avatar(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    image = models.ImageField(upload_to='avatar', null=True)
+    image = models.ImageField(upload_to='avatar', null=True, blank = True)

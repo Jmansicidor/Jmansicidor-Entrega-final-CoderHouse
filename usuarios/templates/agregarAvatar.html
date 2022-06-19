@@ -1,0 +1,26 @@
+{% load bootstrap5 %}
+{% bootstrap_css %}
+{% load static %}
+
+ 
+  <div style= "width:25%; margin :auto;color: darkblue;">
+ <h2>Agregar avatar</h2></div>
+
+ <body>
+  
+    <br> 
+    <form method="POST" enctype="multipart/form-data">
+<div
+    style= "width:25%; margin :auto">
+
+    {% csrf_token %}
+
+  
+
+    {{miFormulario.as_p}}
+</div>
+    <button type="submit" class="btn btn-success">Actualizar Avatar</button>
+
+</form>
+
+ </body>
