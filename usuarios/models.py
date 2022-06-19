@@ -7,6 +7,7 @@ from pickle import TRUE
 from unicodedata import name
 from django import forms
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm
+from django.contrib.auth.models import User
 
 from django.db import models
 
@@ -31,5 +32,5 @@ class UserInfo(models.Model):
 
 
 class Avatar(models.Model):
-    user = models.ForeignKey(UserInfo, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     image = models.ImageField(upload_to='avatar', null=True)
