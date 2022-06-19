@@ -4,32 +4,33 @@
 {% block body %}
     <div class="row">
         <div class="col-sm-12 col-md-6 col-lg-4 col-xl-4 ">
-            <h2>title </h2>
+            <h2>Blog</h2>
 
         </div>
 
         <div class="col-sm-12 col-md-6 col-lg-8 col-xl-8 ">
             <div class="table-responsive py-2">
-                <h1>Listado Usuarios</h1>
+                <h1>Blogs Creados</h1>
                 <table class="table table-striped">
                     <thead>
                     <tr>
-                        <th>Codigo</th>
-                        <th>Nombre Completo</th>
-                        <th>Genero</th>
-                        <th>Correo</th>
+                        <th>Usuario</th>
+                        <th>Tema</th>
 
 
                     </tr>
 
                     </thead>
                     <tbody>
-                    {% for p in userslist %}
+                    {% for b in bloglist %}
                         <tr>
-                            <td>{{ p.id}}</td>
-                            <td>{{ p.name }} {{p.last_name }}</td>
-                            <td>{{ p.get_user_sex_display}}</td>
-                            <td>{{ p.mailbox }}</td>
+                            <td>{{ b.user }}</td>
+                            <td>{{ b.theme }}</td>
+                            <td><a href="blog_new">Crear</a></td>
+                            <td><a href="blog_detail/{{ b.id }}">Detalle</a></td>
+                            <td><a href="blog_edit/{{ b.id }}">Editar</a></td>
+                            <td><a href="blog_delete/{{ b.id }}">Eliminar</a></td>
+
                         </tr>
                     {% endfor %}
 

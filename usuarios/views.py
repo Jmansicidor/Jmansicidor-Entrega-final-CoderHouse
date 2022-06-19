@@ -2,7 +2,7 @@ from re import template
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.urls import reverse_lazy
-from django.views.generic import CreateView,UpdateView,DetailView,DeleteView
+from django.views.generic import CreateView, UpdateView, DetailView, DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.models import User
 from django.contrib.messages.views import SuccessMessageMixin
@@ -17,33 +17,27 @@ def users(request):
     return render(request, "list.html", {"userslist": formaUser})
 
 
-class SingUpView(SuccessMessageMixin,CreateView):
-    
-    
+class SingUpView(SuccessMessageMixin, CreateView):
     template_name = 'user_create_count.html'
-    form_class = UserCreationForm 
-    success_url = reverse_lazy('users')   
+    form_class = UserCreationForm
+    success_url = reverse_lazy('users')
     success_message = 'Se ha creado su cuenta sastifactoriamente'
 
 
 class SingDetail(DetailView):
-
     model = User
     template_name = 'user_detail.html'
 
 
 class SingUpdateView(LoginRequiredMixin, UpdateView):
-
     model = User
     template_name = "user_updete_count.html"
     fields = ["username", "email", "first_name", "last_name"]
 
     def get_success_url(self):
-      return reverse_lazy("user_detail", kwargs={"pk": self.request.user.id})
+        return reverse_lazy("user_detail", kwargs={"pk": self.request.user.id})
 
-    
 
 class UserLogin(LoginView):
     template_name = 'user_login.html'
     next_page = reverse_lazy("users")
-  
