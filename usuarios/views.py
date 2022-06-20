@@ -7,7 +7,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.models import User
 from django.contrib.messages.views import SuccessMessageMixin
 from django.contrib.auth.forms import UserCreationForm
-from django.contrib.auth.views import LoginView
+from django.contrib.auth.views import LoginView,LogoutView
 from .models import UserInfo, Avatar
 from .forms import AvatarFormulario
 from django.contrib.auth.decorators import login_required
@@ -43,9 +43,10 @@ class SingUpdateView(LoginRequiredMixin, UpdateView):
 class UserLogin(LoginView):
     template_name = 'user_login.html'
     next_page = reverse_lazy("users")
-<<<<<<< HEAD
-=======
   
+class UserLogOut(LogoutView):
+    template_name = 'user_logout.html'
+    next_page = reverse_lazy("bloginicio")
 
 @login_required
 def agregarAvatar(request):
@@ -69,4 +70,3 @@ def agregarAvatar(request):
         miFormulario = AvatarFormulario()
 
     return render(request, "agregarAvatar.html", {"miFormulario":miFormulario})
->>>>>>> pruebas_con_avatar

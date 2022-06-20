@@ -2,7 +2,7 @@
 {% bootstrap_css %}
 {% load static %}
 
-<a class="btn btn-secondary" href="{% url 'users' %}" role="button">Volver a Lista De Usuarios</a>
+<a class="btn btn-secondary" href="{% url 'bloginicio' %}" role="button">Regresar</a>
 
 {% block content %}
 
@@ -13,10 +13,13 @@
     <li class="list-group-item">Apellido: {{user.last_name}}</li>
     <li class="list-group-item">Email: {{user.email}}</li>
     <li class="list-group-item">Nombre de Usuario: {{user.username}}</li>
+    <li class="list-group-item">Imagen  :<img height="128" src="{{ object.avatar_set.first.image.url }}"  /></li>
   
   </ul>
 </div>
+
+
 {% endblock content %}
 
-<img height="128" src="{{ object.avatar_set.first.image.url }}" />
+
 

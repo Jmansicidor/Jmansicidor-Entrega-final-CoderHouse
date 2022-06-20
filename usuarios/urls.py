@@ -9,7 +9,8 @@ urlpatterns = [
     path('update/<pk>', views.SingUpdateView.as_view(), name='user_update'),
     path('detail/<pk>', views.SingDetail.as_view(), name='user_detail'),
     path("ingresar/", views.UserLogin.as_view(), name="user_login"),
-    path('agregarAvatar', views.agregarAvatar, name="agregarAvatar")
+    path('agregarAvatar', views.agregarAvatar, name="agregarAvatar"),
+    path("salir/", views.UserLogOut.as_view(), name="user_logout"),
 
 ]
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

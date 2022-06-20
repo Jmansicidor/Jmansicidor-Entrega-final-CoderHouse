@@ -7,27 +7,34 @@
           integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
 </head>
 <body>
-<div style="text-align: right; margin-right: 100px; color:blue">
-
-    {% if user.is_authenticated %}
-
-    
-    Hola {{user.username}}
-    
-    {%else%}
-
-    Registrate 
-    
-
-    {% endif %}
-
-</div>
 
 
 
 <nav class="navbar navbar-dark bg-dark">
     <div class="container-fluid">
-        <a class="navbar-brand" href="#">Blog</a>
+        <a class="navbar-brand" href="{% url 'bloginicio' %}"> Blog </a>    
+          
+            {% if user.is_authenticated %}
+                <a class="navbar-brand" href="{% url 'user_detail'  user.id  %}">
+                    <div         
+            
+                    class="text-warning bg-dark"> <b> Hola {{user.username}}</b>
+
+
+           
+            
+            {%else%}
+                      
+
+            <div        
+            class="text-warning bg-dark"> <b> Registrate </b>
+            </div>
+          
+        
+            {% endif %}
+                    
+            </div>
+        </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
                 aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -46,6 +53,10 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'user_login' %}">Iniciar sesion</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'user_logout' %}">Cerrar sesion</a>
+                </li>
+             
              
             </ul>
         </div>
@@ -62,4 +73,6 @@
         integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
         crossorigin="anonymous"></script>
 </body>
+
+
 </html>
