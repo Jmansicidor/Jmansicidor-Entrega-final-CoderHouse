@@ -22,7 +22,7 @@ def users(request):
 class SingUpView(SuccessMessageMixin, CreateView):
     template_name = 'user_create_count.html'
     form_class = UserCreationForm
-    success_url = reverse_lazy('users')
+    success_url = reverse_lazy('user_login')
     success_message = 'Se ha creado su cuenta sastifactoriamente'
 
 
