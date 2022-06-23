@@ -43,6 +43,10 @@ class SingUpdateView(LoginRequiredMixin, UpdateView):
 class UserLogin(LoginView):
     template_name = 'user_login.html'
     next_page = reverse_lazy("users")
+<<<<<<< HEAD
+=======
+
+>>>>>>> origin/main
   
 class UserLogOut(LogoutView):
     template_name = 'user_logout.html'
