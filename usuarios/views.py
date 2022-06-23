@@ -43,8 +43,7 @@ class SingUpdateView(LoginRequiredMixin, UpdateView):
 class UserLogin(LoginView):
     template_name = 'user_login.html'
     next_page = reverse_lazy("users")
-<<<<<<< HEAD
-=======
+
   
 
 @login_required
@@ -69,4 +68,3 @@ def agregarAvatar(request):
         miFormulario = AvatarFormulario()
 
     return render(request, "agregarAvatar.html", {"miFormulario":miFormulario})
->>>>>>> pruebas_con_avatar
