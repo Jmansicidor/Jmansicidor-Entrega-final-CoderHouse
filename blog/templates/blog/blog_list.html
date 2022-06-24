@@ -1,48 +1,42 @@
-{% extends "base.html" %}
-
-{% block title %} Inicio{% endblock %}
-{% block body %}
-    <div class="row">
-        <div class="col-sm-12 col-md-6 col-lg-4 col-xl-4 ">
-            <h2>Pulsa y Crea</h2>
-
-            <a href="{% url 'blogcrear' %}" class="btn btn-info" role="button">Crear</a>
-
-        </div>
-
-        <div class="col-sm-12 col-md-6 col-lg-8 col-xl-8 ">
-            <div class="table-responsive py-2">
-                <h1>Blogs Creados</h1>
-                <table class="table table-striped">
-                    <thead>
-                    <tr>
-                        <th>Usuario</th>
-                        <th>Tema</th>
+{% load bootstrap5 %}
+{% bootstrap_css %}
 
 
-                    </tr>
-
-                    </thead>
-                    <tbody>
-                    {% for b in bloglist %}
-                        <tr>
-                            <td>{{ b.user }}</td>
-                            <td>{{ b.theme }}</td>
-                            <td><a href="blog_detail/{{ b.id }}">Detalle</a></td>
-                            <td><a href="blog_edit/{{ b.id }}">Editar</a></td>
-                            <td><a href="blog_delete/{{ b.id }}">Eliminar</a></td>
-
-                        </tr>
-                    {% endfor %}
+{% if blog_list  %}
 
 
-                    </tbody>
+{% for blog in blog_list  %}
 
-                </table>
+<br>
+    <li>
 
-            </div>
+
+    {% block content %}
+
+<div class="container text-center">
+        <a href="{% url 'blogdetalle' blog.id %}"><button type="button" class="btn btn-info">Detalles de: {{blog.titulo}}</button></a>
 
 
-        </div>
-    </div>
-{% endblock %}
+
+        {% if user.is_authenticated %}
+
+          <a href="{% url 'blog_delete' blog.id %}"><button type="button" class="btn btn-danger">Borrar</button></a>
+
+          <a href="{% url 'blog_update' blog.id %}"><button type="button" class="btn btn-primary">Actualizar</button></a>
+
+</div>
+        {% endif %}
+
+    {% endblock %}
+
+    </li>
+    {% endfor %}
+    <br>
+    <a href="{% url 'blogcrear'%}"><button type="button" class="btn btn-primary">Agregar blog</button></a>
+    <br>
+    <br>
+  {% else %}
+  <h1> No hay blogs</h1>
+  {% endif %}
+
+
