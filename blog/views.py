@@ -12,13 +12,13 @@ from blog.models import Create
 class blog_new(LoginRequiredMixin, CreateView):
     model = Create
     success_url = reverse_lazy("bloginicio")
-    fields = ["user", "theme", "text_area"]
+    fields = ["theme", "text_area"]
 
 
 class blog_edit(LoginRequiredMixin, UpdateView):
     model = Create
     success_url = reverse_lazy("bloginicio")
-    fields = ["user", "theme", "text_area"]
+    fields = ["theme", "text_area"]
 
 
 class blog_list(ListView):
@@ -31,6 +31,8 @@ class blog_detail(DetailView):
     template_name = "blog/blog_detail.html"
 
 
-class blog_delete(LoginRequiredMixin, DeleteView):
-    model = Create
-    success_url = reverse_lazy("bloginicio")
+def blog_delete(request, id):
+    blog = get_object_or_404(Create, pk=id)
+    if blog:  # \\si persona exite  elimine
+        blog.delete()
+    return redirect('bloginicio')
