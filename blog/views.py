@@ -2,7 +2,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse_lazy
 from django.views.generic import ListView
-import blog
+
 from blog.forms import UserForms
 from django.views.generic import CreateView, DeleteView, DetailView, UpdateView
 # Create your views here.
@@ -13,6 +13,9 @@ class blog_new(LoginRequiredMixin, CreateView):
     model = Create
     success_url = reverse_lazy("bloginicio")
     fields = ["theme", "text_area"]
+    def form_valid(self, form):
+        form.instance.autor = self.request.user
+        return super().form_valid(form)
 
 
 class blog_edit(LoginRequiredMixin, UpdateView):

@@ -13,6 +13,7 @@ class Create(models.Model):
     theme = models.CharField(max_length=100)
     date = models.DateTimeField(auto_now_add=True)
     text_area = models.TextField(max_length=500)
+    autor = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def __str__(self):
         return f" {self.theme} {self.date} {self.text_area}  "
