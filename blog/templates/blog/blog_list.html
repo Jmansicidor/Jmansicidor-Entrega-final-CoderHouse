@@ -54,12 +54,13 @@
                                              <td><a href="{% url 'blog_delete' blog.id %}">
                                                  <button type="button" class="btn btn-danger">Borrar</button>
                                                 </a></td>
+                                                 <td><a href="{% url 'blogcrear' %}">
+                                                <button type="button" class="btn btn-primary">Agregar blog</button>
+                                                </a></td>
                                            
                                             {%else%}
                                             
-                                                <td><a href="{% url 'blogcrear' %}">
-                                                <button type="button" class="btn btn-primary">Agregar blog</button>
-                                                </a></td>
+                                               
                                                 <td><a href="{% url 'blogdetalle' blog.id %}">
                                                 <button type="button" class="btn btn-info">Detalle</button>
                                                 </a></td>
