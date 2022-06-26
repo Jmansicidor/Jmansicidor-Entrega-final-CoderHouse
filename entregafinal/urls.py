@@ -27,8 +27,8 @@ from usuarios.templates import*
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('blog/', include('blog.urls')),
-    path('', include('usuarios.urls')),
+    path('', include('blog.urls')),
+    path('users/', include('usuarios.urls')),
     
 ]
 
