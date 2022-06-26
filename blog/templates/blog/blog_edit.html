@@ -6,11 +6,12 @@
         <h1>Editar Blog</h1>
     </div>
     <form method="POST">
+        {% csrf_token %}
         <table>
             {{ formnewBlog }}
         </table>
         <button type="submit">Crear</button>
         <a href="{% url 'bloginicio' %}" class="btn btn-info" role="button">Regresar</a>
-        {% csrf_token %}
+        
     </form>
 {% endblock %}

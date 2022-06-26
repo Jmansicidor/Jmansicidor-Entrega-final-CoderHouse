@@ -1,0 +1,11 @@
+{% load bootstrap5 %}
+{% bootstrap_css %}
+
+<div class="container text-center">
+    <form method="post">{% csrf_token %}
+        <h1>Confirmar Eliminación</h1>
+        <p>¿Está Seguro que quieres borrar el blog de "{{ user.username}}"?</p>
+        {{ form }}
+        <button type="submit" class="btn btn-danger">Confirmar</button>
+    </form>
+</div>

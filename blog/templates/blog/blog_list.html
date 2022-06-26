@@ -2,12 +2,16 @@
 {% load bootstrap5 %}
 {% bootstrap_css %}
 {% load static %}
-{% block title %} Información{% endblock %}
+
+
+{% block body %}  
 {% if object_list %}
 
-    {% block body %}
-        {% for blog in object_list %}
 
+
+   
+    
+        {% for blog in object_list %}
 
 
 
@@ -15,7 +19,9 @@
 
                 <div class="container text-center">
 
-                    {% if user.is_authenticated %}
+                    
+     
+
 
                         <div class="row">
                             <div class="col-sm-12 col-md-6 col-lg-8 col-xl-8 "><h2>Creados</h2>
@@ -33,18 +39,32 @@
                                         <tr>
                                             <td>{{ blog.theme }}</td>
                                             <td>{{ blog.date }}</td>
-                                            <td><a href="{% url 'blogcrear' %}">
+                                            {% if user.is_authenticated %}
+                                              
+                                             <td><a href="{% url 'blogcrear' %}">
                                                 <button type="button" class="btn btn-primary">Agregar blog</button>
-                                            </a></td>
-                                            <td><a href="{% url 'blogdetalle' blog.id %}">
+                                                </a></td>
+                                                <td><a href="{% url 'blogdetalle' blog.id %}">
+                                                    <button type="button" class="btn btn-info">Detalle</button>
+                                                </a></td>
+                                        
+                                             <td><a href="{% url 'blog_update' blog.id %}">
+                                                 <button type="button" class="btn btn-primary">Actualizar</button>
+                                             </a></td>
+                                             <td><a href="{% url 'blog_delete' blog.id %}">
+                                                 <button type="button" class="btn btn-danger">Borrar</button>
+                                                </a></td>
+                                           
+                                            {%else%}
+                                            
+                                                <td><a href="{% url 'blogcrear' %}">
+                                                <button type="button" class="btn btn-primary">Agregar blog</button>
+                                                </a></td>
+                                                <td><a href="{% url 'blogdetalle' blog.id %}">
                                                 <button type="button" class="btn btn-info">Detalle</button>
-                                            </a></td>
-                                            <td><a href="{% url 'blog_update' blog.id %}">
-                                                <button type="button" class="btn btn-primary">Actualizar</button>
-                                            </a></td>
-                                            <td><a href="{% url 'blog_delete' blog.id %}">
-                                                <button type="button" class="btn btn-danger">Borrar</button>
-                                            </a></td>
+                                                </a></td>
+                                               
+                                            {%endif%}
                                         </tr>
 
                                         </tbody>
@@ -59,16 +79,20 @@
 
 
 
-                    {% endif %}
+                  
 
             {% endblock %}
 
             </li>
         {% endfor %}
-    {% endblock body %}
+    
+
 {% else %}
-    <h1> No hay blogs</h1>
+    <div style= "width:50%; margin :auto;">
+        <h1> No hay blogs creados</h1>
+        <p style= "color: brown">pulsa el boton para creaer un nuevo blog</p>
+        <a class="btn btn-primary" href="{% url 'blogcrear' %}"role="button">Crear</a>
+    </div>
 {% endif %}
 
-
-
+{% endblock  %}

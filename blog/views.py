@@ -31,8 +31,6 @@ class blog_detail(DetailView):
     template_name = "blog/blog_detail.html"
 
 
-def blog_delete(request, id):
-    blog = get_object_or_404(Create, pk=id)
-    if blog:  # \\si persona exite  elimine
-        blog.delete()
-    return redirect('bloginicio')
+class blog_delete(LoginRequiredMixin, DeleteView):
+    model = Create
+    success_url = reverse_lazy("bloginicio")
