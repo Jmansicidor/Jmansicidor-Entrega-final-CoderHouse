@@ -6,13 +6,14 @@ from django.views.generic import ListView
 from blog.forms import UserForms
 from django.views.generic import CreateView, DeleteView, DetailView, UpdateView
 # Create your views here.
-from blog.models import Create
+from blog.models import Create, Profile
 
 
 class blog_new(LoginRequiredMixin, CreateView):
     model = Create
     success_url = reverse_lazy("bloginicio")
     fields = ["theme", "text_area"]
+
     def form_valid(self, form):
         form.instance.autor = self.request.user
         return super().form_valid(form)
@@ -37,3 +38,8 @@ class blog_detail(DetailView):
 class blog_delete(LoginRequiredMixin, DeleteView):
     model = Create
     success_url = reverse_lazy("bloginicio")
+
+
+def userprofile(request):
+    userimgprofile = Profile.objects.count()
+    return render(request, "bloginicio", {"userimgprofile": userimgprofile})

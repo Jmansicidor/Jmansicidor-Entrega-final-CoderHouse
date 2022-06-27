@@ -4,13 +4,13 @@
 {% load static %}
 
 
-{% block body %}  
-{% if object_list %}
+{% block body %}
+    {% if object_list %}
 
 
 
-   
-    
+
+
         {% for blog in object_list %}
 
 
@@ -19,80 +19,79 @@
 
                 <div class="container text-center">
 
-                    
-     
 
+                    <div class="row">
+                        <div class="col-sm-12 col-md-6 col-lg-8 col-xl-8 "><h2>Creados</h2>
+                            <div class="container">
+                                <table class="table table-striped ">
+                                    <thead>
+                                    <tr>
+                                        <th></th>
+                                        <th>Tema</th>
+                                        <th>Creacion</th>
+                                        <th>Acciones</th>
 
-                        <div class="row">
-                            <div class="col-sm-12 col-md-6 col-lg-8 col-xl-8 "><h2>Creados</h2>
-                                <div class="container">
-                                    <table class="table table-striped ">
-                                        <thead>
-                                        <tr>
-                                            <th>Tema</th>
-                                            <th>Creacion</th>
-                                            <th>Acciones</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                        <td><img src="{{ blog.autor.profile.image.url}}"></td>
+                                        <td>{{ blog.theme }}</td>
+                                        <td>{{ blog.date }}</td>
+                                        {% if user.is_authenticated %}
 
-                                        </tr>
-                                        </thead>
-                                        <tbody>
-                                        <tr>
-                                            <td>{{ blog.theme }}</td>
-                                            <td>{{ blog.date }}</td>
-                                            {% if user.is_authenticated %}
-                                              
-                                             <td><a href="{% url 'blogcrear' %}">
+                                            <td><a href="{% url 'blogcrear' %}">
                                                 <button type="button" class="btn btn-primary">Agregar blog</button>
-                                                </a></td>
-                                                <td><a href="{% url 'blogdetalle' blog.id %}">
-                                                    <button type="button" class="btn btn-info">Detalle</button>
-                                                </a></td>
-                                        
-                                             <td><a href="{% url 'blog_update' blog.id %}">
-                                                 <button type="button" class="btn btn-primary">Actualizar</button>
-                                             </a></td>
-                                             <td><a href="{% url 'blog_delete' blog.id %}">
-                                                 <button type="button" class="btn btn-danger">Borrar</button>
-                                                </a></td>
-                                                                                        
-                                            
-                                                 
-                                            {%else%}
-                                            
-                                               
-                                                <td><a href="{% url 'blogdetalle' blog.id %}">
+                                            </a></td>
+                                            <td><a href="{% url 'blogdetalle' blog.id %}">
                                                 <button type="button" class="btn btn-info">Detalle</button>
-                                                </a></td>
-                                               
-                                            {%endif%}
-                                        </tr>
+                                            </a></td>
 
-                                        </tbody>
-                                    </table>
-                                </div>
+                                            <td><a href="{% url 'blog_update' blog.id %}">
+                                                <button type="button" class="btn btn-primary">Actualizar</button>
+                                            </a></td>
+                                            <td><a href="{% url 'blog_delete' blog.id %}">
+                                                <button type="button" class="btn btn-danger">Borrar</button>
+                                            </a></td>
+
+
+
+                                        {% else %}
+
+
+                                            <td><a href="{% url 'blogdetalle' blog.id %}">
+                                                <button type="button" class="btn btn-info">Detalle</button>
+                                            </a></td>
+
+                                        {% endif %}
+                                    </tr>
+
+                                    </tbody>
+                                </table>
                             </div>
-
                         </div>
 
-                        </div>
+                    </div>
+
+                </div>
 
 
 
 
-                  
+
 
             {% endblock %}
 
             </li>
         {% endfor %}
-    
 
-{% else %}
-    <div style= "width:50%; margin :auto;">
-        <h1> No hay blogs creados</h1>
-        <p style= "color: brown">pulsa el boton para creaer un nuevo blog</p>
-        <a class="btn btn-primary" href="{% url 'blogcrear' %}"role="button">Crear</a>
-    </div>
-{% endif %}
 
-{% endblock  %}
+    {% else %}
+        <div style="width:50%; margin :auto;">
+            <h1> No hay blogs creados</h1>
+            <p style="color: brown">pulsa el boton para creaer un nuevo blog</p>
+            <a class="btn btn-primary" href="{% url 'blogcrear' %}" role="button">Crear</a>
+        </div>
+    {% endif %}
+
+{% endblock %}

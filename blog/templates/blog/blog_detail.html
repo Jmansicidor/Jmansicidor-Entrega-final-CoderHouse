@@ -3,13 +3,14 @@
 {% block title %} Detalle{% endblock %}
 </head>
 {% block body %}
-    
+
     <h1>Detalle Blog</h1>
-    <div>Creado por :{{object.autor}}</div>
+    <td><img src="{{ object.autor.profile.image.url }}"></td>
+    <div>Creado por :{{ object.autor }}</div>
     <div>Fecha: {{ object.date }}</div>
     <div>Tema: {{ object.theme }}</div>
     <div>Texto: {{ object.text_area }}</div>
-    
+
     <a href="{% url 'bloginicio' %}" class="btn btn-info" role="button">Regresar</a>
 {% endblock body %}
 </html>
