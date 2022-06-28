@@ -9,31 +9,30 @@
 <body>
 
 
-
 <nav class="navbar navbar-dark bg-dark">
     <div class="container-fluid">
-        <a class="navbar-brand" href="{% url 'bloginicio' %}"> Blog </a>    
-          
-            {% if user.is_authenticated %}
-                <a class="navbar-brand" href="{% url 'user_detail'  user.id  %}">
-                    <div         
-            
-                    class="text-warning bg-dark"> <b> Hola {{user.username}}</b>
+        <a class="navbar-brand" href="{% url 'bloginicio' %}"> Blog </a>
+
+        {% if user.is_authenticated %}
+            <a class="navbar-brand" href="{% url 'user_detail'  user.id %}">
+            <div
+
+                    class="text-warning bg-dark"> <b> Hola {{ user.username }}</b>
 
 
-           
-            
-            {%else%}
-                      
 
-            <div        
-            class="text-warning bg-dark"> <b> Inicia sesion para crear blog </b>
+
+        {% else %}
+
+
+            <div
+                    class="text-warning bg-dark"><b> Inicia sesion para crear blog </b>
             </div>
-          
-        
-            {% endif %}
-                    
-            </div>
+
+
+        {% endif %}
+
+        </div>
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
                 aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -48,7 +47,7 @@
                     <a class="nav-link" href="{% url 'user_update'   user.id %}">Editar Perfil</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{% url 'user_detail'  user.id  %}">Detalles de usuario</a>
+                    <a class="nav-link" href="{% url 'user_detail'  user.id %}">Detalles de usuario</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'user_login' %}">Iniciar sesion</a>
@@ -56,16 +55,16 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'user_logout' %}">Cerrar sesion</a>
                 </li>
-             
-             
+
+
             </ul>
         </div>
     </div>
 </nav>
 <div class="container py-4">
-{% block body %}
+    {% block body %}
 
-{% endblock %}
+    {% endblock %}
 
 </div>
 
@@ -73,88 +72,71 @@
         integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
         crossorigin="anonymous"></script>
 </body>
- <footer class="text-center text-white bg-dark"   style="position:relative"  ;
-  >
+<footer class="text-center text-white bg-dark" style="position:relative" ;
+>
     <!-- Grid container -->
     <div class="container">
-      <!-- Section: Links -->
-      <section class="mt-5">
-        <!-- Grid row-->
-        <div class="row text-center d-flex justify-content-center pt-5">
-          <!-- Grid column -->
-          <div class="col-md-2">
-            <h6 class="text-uppercase font-weight-bold">
-              <a href="#!" class="text-white">About us</a>
-            </h6>
-          </div>
-          <!-- Grid column -->
+        <!-- Section: Links -->
+        <section class="mt-5">
+            <!-- Grid row-->
+            <div class="row text-center d-flex justify-content-center pt-5">
+                <!-- Grid column -->
+                <div class="col-md-2">
+                    <h6 class="text-uppercase font-weight-bold">
+                        <a href="{% url 'bloginicio' %}" class="text-white">Blog</a>
 
-          <!-- Grid column -->
-          <div class="col-md-2">
-            <h6 class="text-uppercase font-weight-bold">
-              <a href="#!" class="text-white">Products</a>
-            </h6>
-          </div>
-          <!-- Grid column -->
+                        <div><a href="{% url 'blogcrear' %}" class="text-white">Crear</a></div>
+                        <div><a href="{% url 'bloginicio' %}" class="text-white">Lista</a></div>
 
-          <!-- Grid column -->
-          <div class="col-md-2">
-            <h6 class="text-uppercase font-weight-bold">
-              <a href="#!" class="text-white">Awards</a>
-            </h6>
-          </div>
-          <!-- Grid column -->
 
-          <!-- Grid column -->
-          <div class="col-md-2">
-            <h6 class="text-uppercase font-weight-bold">
-              <a href="#!" class="text-white">Help</a>
-            </h6>
-          </div>
-          <!-- Grid column -->
+                    </h6>
+                </div>
+                <!-- Grid column -->
 
-          <!-- Grid column -->
-          <div class="col-md-2">
-            <h6 class="text-uppercase font-weight-bold">
-              <a href="#!" class="text-white">Contact</a>
-            </h6>
-          </div>
-          <!-- Grid column -->
-        </div>
-        <!-- Grid row-->
-      </section>
-      <!-- Section: Links -->
+                <!-- Grid column -->
+                <div class="col-md-2">
+                    <h6 class="text-uppercase font-weight-bold">
+                        <a href="#!" class="text-white">Perfil</a>
+                    </h6>
+                </div>
+                <!-- Grid column -->
 
-      <hr class="my-5" />
+                <!-- Grid column -->
+                <div class="col-md-2">
+                    <h6 class="text-uppercase font-weight-bold">
+                        <a href="https://github.com/Jmansicidor/Jmansicidor-Entrega-final-CoderHouse" class="text-white">GIT</a>
+                    </h6>
+                </div>
+                <!-- Grid column -->
 
-      <!-- Section: Text -->
-      <section class="mb-5">
-        <div class="row d-flex justify-content-center">
-          <div class="col-lg-8">
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt
-              distinctio earum repellat quaerat voluptatibus placeat nam,
-              commodi optio pariatur est quia magnam eum harum corrupti
-              dicta, aliquam sequi voluptate quas.
-            </p>
-          </div>
-        </div>
-      </section>
-      <!-- Section: Text -->
+                <!-- Grid column -->
+                <div class="col-md-2">
+                    <h6 class="text-uppercase font-weight-bold">
+                        <a href="#!" class="text-white">Ayuda</a>
+                    </h6>
+                </div>
+                <!-- Grid column -->
+
+            </div>
+            <!-- Grid row-->
+        </section>
+        <!-- Section: Links -->
+
+        <hr class="my-5"/>
     </div>
     <!-- Grid container -->
 
     <!-- Copyright -->
     <div
-         class="text-center p-3"
-         style="background-color: rgba(0, 0, 0, 0.2)"
-         >
-      © 2022 Copyright:
-      <a class="text-white" href="https://ww.google.com/"
-         >JCM</a
+            class="text-center p-3"
+            style="background-color: rgba(0, 0, 0, 0.2)"
+    >
+        © 2022 Copyright:
+        <a class="text-white" href="https://ww.google.com/"
+        >JCM</a
         >
     </div>
     <!-- Copyright -->
-  </footer>
+</footer>
 
 </html>
