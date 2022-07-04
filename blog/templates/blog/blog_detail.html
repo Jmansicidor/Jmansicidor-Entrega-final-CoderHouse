@@ -10,7 +10,7 @@
     <div>Fecha: {{ object.date }}</div>
     <div>Tema: {{ object.theme }}</div>
     <div>Texto: {{ object.text_area }}</div>
-
+    <a href="{% url 'blogprofile' %}" class="btn btn-info" role="button">Cambiar Avatar</a>
     <a href="{% url 'bloginicio' %}" class="btn btn-info" role="button">Regresar</a>
 {% endblock body %}
 </html>
