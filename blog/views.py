@@ -18,6 +18,15 @@ class blog_new(LoginRequiredMixin, CreateView):
         form.instance.autor = self.request.user
         return super().form_valid(form)
 
+class blog_profile(LoginRequiredMixin, CreateView):
+    model = Profile
+    success_url = reverse_lazy("bloginicio")
+    fields = ["user", "image"]
+
+    def form_valid(self, form):
+        form.instance.autor = self.request.user
+        return super().form_valid(form)
+
 
 class blog_edit(LoginRequiredMixin, UpdateView):
     model = Create
